@@ -1,10 +1,9 @@
-import React from 'react'
 import { Box, Flex } from '@chakra-ui/react'
 import { VStack } from '@chakra-ui/react'
 import {Span} from '@chakra-ui/react'
 import {Link} from 'react-router-dom'
 import {Image} from '@chakra-ui/react'
-// import { Tooltip } from '@chakra-ui/react'
+import { Tooltip } from "@/components/ui/tooltip"
 //tooltip problem <Tooltip display={{base:"block",md:"none"}} openDelay={500} closeDelay={100} hasArrow content={"Log out"} positioning={{placement:"right-end"}}></Tooltip>
 export const Sidebar = () => {
   return (
@@ -16,7 +15,7 @@ export const Sidebar = () => {
             <Flex width={{base:"6.5vw",md:"9vw"}} borderRadius={6} _hover={{bg:"whiteAlpha.400"}} alignItems={{base:"flex-start", lg:"center"}}><Image h={"4vh"} src={"/bell1.png"} marginRight={3}/><Link to={"/auth"} cursor={"pointer"}><Span display={{base:"none", lg:"block"}} fontSize={{lg:16, xl:18}}>Notifications</Span></Link></Flex>
             <Flex width={"6.5vw"} borderRadius={6} _hover={{bg:"whiteAlpha.400"}} alignItems={"center"}><Image _hover={{base:{bg:"whiteAlpha.400"},md:null}} h={"4vh"} src={"/create1.png"} marginRight={3}/><Link to={"/auth"} cursor={"pointer"}><Span display={{base:"none", lg:"block"}} fontSize={{lg:16, xl:18}}>Create</Span></Link></Flex>
             <Flex width={"6.5vw"} borderRadius={6} _hover={{bg:"whiteAlpha.400"}} alignItems={"center"}><Image h={"4vh"} src={"/profile.png"} marginRight={3}/><Link to={"/profile"} cursor={"pointer"}><Span display={{base:"none", lg:"block"}} fontSize={18}>Profile</Span></Link></Flex>
-            <Flex width={"8vw"} borderRadius={6} _hover={{bg:"whiteAlpha.400"}} marginTop={"auto"} alignItems={"center"}>  <Image h={"4vh"} src={"/logout1.png"} marginRight={3}/><Link w={{base:10,md:"full"}} to={"/auth"} cursor={"pointer"}><Span display={{base:"none", lg:"block"}} fontSize={18}>Log out</Span></Link></Flex>
+            <Flex width={"8vw"} borderRadius={6} _hover={{bg:"whiteAlpha.400"}} marginTop={"auto"} alignItems={"center"}>  <Image h={"4vh"} src={"/logout1.png"} marginRight={3}/><Link w={{base:10,md:"full"}} to={"/auth"} cursor={"pointer"}><Tooltip display={{base:"block",md:"none"}} openDelay={500} closeDelay={100} hasArrow content={"Log out"} positioning={{placement:"right-end"}}><Span display={{base:"none", lg:"block"}} fontSize={18}>Log out</Span></Tooltip></Link></Flex>
         </VStack>
     </Box>
   )

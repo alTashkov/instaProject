@@ -1,16 +1,11 @@
 import { GridItem, Flex, Text, Image, Button, Span } from '@chakra-ui/react'
 import { VStack } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Avatar } from "@/components/ui/avatar";
 import {
-  DialogActionTrigger,
   DialogBody,
   DialogContent,
-  DialogFooter,
-  DialogHeader,
   DialogRoot,
-  DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog"
 import PictureComment from './PictureComment';
 import PostFooter from '../FeedPosts/PostFooter'
