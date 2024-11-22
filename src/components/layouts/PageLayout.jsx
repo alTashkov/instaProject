@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import { Flex, Box } from '@chakra-ui/react';
-import React from 'react';
 import {Sidebar} from "@/components/sidebar/Sidebar.jsx";
 import { useLocation } from 'react-router-dom';
 export const PageLayout = ({children}) => {

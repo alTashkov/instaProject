@@ -12,16 +12,12 @@ const SignUp = () => {
     })
     const [loading,error,signup] = useSignUpWithEmailAndPassword();
     
-    const handlePassword = () => {
-        setShowPassword(!showPassword)
-    }
-    const [showPassword, setShowPassword] = useState(false)
     return (
         <>
             <Input fontSize={12} size={"sm"} placeholder='Email:' type='email' value={inputs.email} onChange={(e) => setInputs({...inputs,email:e.target.value})}/>
             <Input fontSize={12} size={"sm"} placeholder='Username:' type='text' value={inputs.username} onChange={(e) => setInputs({...inputs,username:e.target.value})}/>
             <Input fontSize={12} size={"sm"} placeholder='Full Name:' type='text' value={inputs.fullName} onChange={(e) => setInputs({...inputs,fullName:e.target.value})}/>
-            <PasswordInput fontSize={12} placeholder='Password:' type={showPassword?"text":"password"} value={inputs.password} size={"sm"} onChange={(e) => setInputs({...inputs,password:e.target.value})}/>
+            <PasswordInput fontSize={12} placeholder='Password:' value={inputs.password} size={"sm"} onChange={(e) => setInputs({...inputs,password:e.target.value})}/>
             {error && (
                 <Alert status="error" fontSize={13} p={2} borderRadius={4}>
                     {error.message}

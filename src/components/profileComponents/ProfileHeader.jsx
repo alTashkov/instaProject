@@ -1,5 +1,5 @@
-import {Flex, Box, Text, Button, VStack, Span } from '@chakra-ui/react'
-import React from 'react'
+/* eslint-disable react/prop-types */
+import {Flex, Text, Button, VStack, Span } from '@chakra-ui/react'
 import { Avatar } from "@/components/ui/avatar";
 import {AvatarGroup} from "@/components/ui/avatar";
 const ProfileHeader = ({img, username}) => {

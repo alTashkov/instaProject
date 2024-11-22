@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import { VStack, Image, Box, Flex, Text, Span, Input, Button } from '@chakra-ui/react';
 import { InputGroup } from "@/components/ui/input-group";
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const PostFooter = ({username, click = false, modify=true, isProfilePage=false}) => {
   const [liked, setLiked] = useState(false);

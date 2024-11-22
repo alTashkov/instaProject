@@ -1,4 +1,4 @@
-import React from 'react'
+/* eslint-disable react/prop-types */
 import { Avatar } from "@/components/ui/avatar";
 import { Flex, Span} from '@chakra-ui/react'
 const PictureComment = ({username,avatar,comment}) => {

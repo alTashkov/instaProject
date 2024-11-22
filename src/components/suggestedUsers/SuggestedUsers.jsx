@@ -1,4 +1,3 @@
-import React from 'react'
 import SuggestedHeader from './SuggestedHeader'
 import SuggestedUser from './SuggestedUser'
 import { VStack } from '@chakra-ui/react'

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Box, Image } from '@chakra-ui/react';
 import PostHeader from './PostHeader';
 import PostFooter from './PostFooter';

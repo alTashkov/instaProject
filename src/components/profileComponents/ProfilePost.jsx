@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { GridItem, Flex, Text, Image, Button, Span } from '@chakra-ui/react'
 import { VStack } from '@chakra-ui/react'
 import { useState } from 'react'
