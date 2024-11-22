@@ -1,11 +1,13 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, Button } from "@chakra-ui/react";
 import { VStack } from "@chakra-ui/react";
 import { Span } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { Image } from "@chakra-ui/react";
 import { Tooltip } from "@/components/ui/tooltip";
+import useLogout from "../../hooks/useLogout";
 //tooltip problem <Tooltip display={{base:"block",md:"none"}} openDelay={500} closeDelay={100} hasArrow content={"Log out"} positioning={{placement:"right-end"}}></Tooltip>
 export const Sidebar = () => {
+  const {handleLogout,isLoggingOut} = useLogout();
   return (
     <Box>
       <VStack
@@ -113,13 +115,12 @@ export const Sidebar = () => {
             content={"Log out"}
             positioning={{ placement: "right-end" }}
           >
-            <Link w={{ base: 10, md: "full" }} to={"/auth"} cursor={"pointer"}>
+            <Flex w={{ base: 10, md: "full" }} to={"/auth"} cursor={"pointer"} onClick={handleLogout}>
               
-
-              <Span display={{ base: "none", lg: "block" }} fontSize={18}>
+              <Button display={{ base: "none", lg: "block" }} fontSize={18} variant={"ghost"} _hover={{bg:"transparent"}} isLoading={isLoggingOut}>
                 Log out
-              </Span>
-            </Link>
+              </Button>
+            </Flex>
           </Tooltip>
         </Flex>
       </VStack>
