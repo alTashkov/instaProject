@@ -6,7 +6,7 @@ import { useState } from 'react';
 import SignUp from './SignUp';
 import Login from './Login';
 import Google from './Google';
-
+// testing branch change
 export const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true)
   const handleLogin = () => {
