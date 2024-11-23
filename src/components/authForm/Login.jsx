@@ -43,7 +43,7 @@ const Login = () => {
         width={270}
         background={"blue.500"}
         color={"white"}
-        laoding
+        laoding={loading}
         onClick={handleLogin}
       >
         Log in

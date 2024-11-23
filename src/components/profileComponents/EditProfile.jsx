@@ -1,6 +1,8 @@
-import { Button, Flex, VStack, Text, Input, HStack } from "@chakra-ui/react";
+import { Flex, VStack, Text, Input, HStack } from "@chakra-ui/react";
+import { Button } from "@/components/ui/button"
 import { useRef, useState } from "react";
 import { Avatar } from "@/components/ui/avatar";
+
 import {
   DialogActionTrigger,
   DialogBody,
@@ -13,6 +15,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import useAuthStore from "../../store/authStore";
+import usePreviewImg from "../../hooks/usePreviewImg";
+import useEditProfile from "../../hooks/useEditProfile";
+import useShowToast from "../../hooks/useShowToast";
 
 const EditProfile = ({ isOpen, onClose }) => {
   const [inputs, setInputs] = useState({
@@ -20,11 +25,22 @@ const EditProfile = ({ isOpen, onClose }) => {
     username: "",
     bio: "",
   });
+  const showToast = useShowToast();
+  const {isUpdating,editProfile} = useEditProfile();
   const authUser = useAuthStore((state) => state.user);
-  const handleSave = () => {
-    console.log(inputs);
-  }
   const fileRef = useRef(null);
+  const {handleImageChange,selectedFile,setSelectedFile} = usePreviewImg();
+  const handleSave = async() => {
+    try {
+        await editProfile(inputs,selectedFile);
+        setSelectedFile(null);
+        onClose();
+    }
+    catch (error) {
+        showToast("Error",error.message,"error");
+    }
+  }
+  
   return (
     <DialogRoot
       open={isOpen}
@@ -60,11 +76,11 @@ const EditProfile = ({ isOpen, onClose }) => {
               padding={10}
               pt={2}
             >
-              <Avatar size={"2xl"}></Avatar>
-              <Button borderRadius={10} w={"60%"} onClick={()=>fileRef.current.click()}>
+              <Avatar border={"2px solid white"} h={"100px"} w={"100px"} src={selectedFile || authUser.profilePicURL}></Avatar>
+              <Button borderRadius={10} w={"60%"} onClick={()=>fileRef.current.click()} loading={isUpdating}>
                 Edit profile picture
               </Button>
-              <Input type="file" hidden ref={fileRef}/>
+              <Input type="file" hidden ref={fileRef} onChange={handleImageChange}/>
             </Flex>
             <VStack w={"full"} gap={7} pb={10}>
               <Flex flexDir={"column"} gap={2} w={"90%"}>

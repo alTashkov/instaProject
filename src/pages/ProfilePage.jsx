@@ -6,6 +6,7 @@ import ProfileTabs from "../components/profileComponents/PorfileTabs";
 import useGetUserProfileByUserName from "../hooks/useGetUserProfileByUserName";
 import { useParams } from "react-router-dom";
 import useAuthStore from "../store/authStore";
+import { Toaster } from "@/components/ui/toaster";
 
 const ProfilePage = () => {
   const { username } = useParams();
@@ -16,6 +17,7 @@ const ProfilePage = () => {
 
   return (
     <Container>
+      <Toaster/>
       <Flex
         py={10}
         px={4}

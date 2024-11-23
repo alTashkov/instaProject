@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Input, Button, Text } from "@chakra-ui/react";
+import { Input, Text } from "@chakra-ui/react";
+import { Button } from "@/components/ui/button"
 import { PasswordInput } from "@/components/ui/password-input";
 import useSignUpWithEmailAndPassword from "../../hooks/useSignUpWithEmailAndPassword.js";
 import { Alert } from "@/components/ui/alert";
@@ -59,6 +60,7 @@ const SignUp = () => {
         background={"blue.500"}
         color={"white"}
         onClick={()=>signup(inputs)}
+        loading={loading}
       >
         <Text>Sign up</Text>
       </Button>
