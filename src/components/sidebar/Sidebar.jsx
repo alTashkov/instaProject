@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 import { Image } from "@chakra-ui/react";
 import { Tooltip } from "@/components/ui/tooltip";
 import useLogout from "../../hooks/useLogout";
+import useAuthStore from "../../store/authStore";
 //tooltip problem <Tooltip display={{base:"block",md:"none"}} openDelay={500} closeDelay={100} hasArrow content={"Log out"} positioning={{placement:"right-end"}}></Tooltip>
 export const Sidebar = () => {
   const {handleLogout,isLoggingOut} = useLogout();
+  const authUser = useAuthStore((state) => state.user);
   return (
     <Box>
       <VStack
@@ -92,7 +94,7 @@ export const Sidebar = () => {
           alignItems={"center"}
         >
           <Image h={"4vh"} src={"/profile.png"} marginRight={3} />
-          <Link to={"/profile"} cursor={"pointer"}>
+          <Link to={`/${authUser?.username}`} cursor={"pointer"}>
             <Span display={{ base: "none", lg: "block" }} fontSize={18}>
               Profile
             </Span>

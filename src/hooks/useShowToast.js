@@ -1,14 +1,15 @@
-import {toaster} from "@/components/ui/toaster"
+import { toaster } from "@/components/ui/toaster";
+import { useCallback } from "react";
 const useShowToast = () => {
-    const showToast = (title,description,type) => {
-        toaster.create({
-            title:title,
-            description: description,
-            type:type,
-            duration:3000
-        })
-    } 
-    return showToast
-}
+  const showToast = useCallback((title, description, type) => {
+    toaster.create({
+      title: title,
+      description: description,
+      type: type,
+      duration: 3000,
+    });
+  });
+  return showToast;
+};
 
-export default useShowToast
+export default useShowToast;
