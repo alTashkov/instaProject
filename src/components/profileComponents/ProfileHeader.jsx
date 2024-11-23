@@ -4,12 +4,20 @@ import { Avatar } from "@/components/ui/avatar";
 import { AvatarGroup } from "@/components/ui/avatar";
 import useUserProfileStore from "../../store/userProfileStore";
 import useAuthStore from "../../store/authStore";
+import EditProfile from "./EditProfile";
+import { useState } from "react";
 const ProfileHeader = () => {
   const { userProfile } = useUserProfileStore();
   console.log("Profile header name: " + userProfile.username);
-  const authUser = useAuthStore((state)=>state.user);
-  const visitingOwnProfileAndAuth = authUser && authUser.username === userProfile.username;
-  const visitingAnotherUserProfileAndAuth = authUser && authUser.username !== userProfile.username;
+  const authUser = useAuthStore((state) => state.user);
+  const visitingOwnProfileAndAuth =
+    authUser && authUser.username === userProfile.username;
+  const visitingAnotherUserProfileAndAuth =
+    authUser && authUser.username !== userProfile.username;
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    setOpen(!open);
+  }
   return (
     <Flex
       gap={{ base: 4, sm: 10 }}
@@ -37,32 +45,36 @@ const ProfileHeader = () => {
         >
           <Text fontWeight={"bold"}>{userProfile.username}</Text>
           {visitingOwnProfileAndAuth && (
-                <Button
-                borderRadius={6}
-                bg={"white"}
-                cursor={"pointer"}
-                color={"black.400"}
-                fontWeight={"bold"}
-                _hover={{ bg: "whiteAlpha.800" }}
-                size={{ base: "xs", md: "sm" }}
+            <Button
+              borderRadius={6}
+              bg={"white"}
+              cursor={"pointer"}
+              color={"black.400"}
+              fontWeight={"bold"}
+              _hover={{ bg: "whiteAlpha.800" }}
+              size={{ base: "xs", md: "sm" }}
+              onClick={handleOpen}
             >
-                Edit profile
+              Edit profile
             </Button>
+            
+          )}
+          {open && (
+            <EditProfile isOpen={open} onClose={handleOpen}/>
           )}
           {visitingAnotherUserProfileAndAuth && (
-                <Button
-                borderRadius={6}
-                bg={"blue.500"}
-                cursor={"pointer"}
-                color={"white"}
-                fontWeight={"bold"}
-                _hover={{ bg: "blue.600" }}
-                size={{ base: "xs", md: "md" }}
+            <Button
+              borderRadius={6}
+              bg={"blue.500"}
+              cursor={"pointer"}
+              color={"white"}
+              fontWeight={"bold"}
+              _hover={{ bg: "blue.600" }}
+              size={{ base: "xs", md: "md" }}
             >
-                Follow
+              Follow
             </Button>
           )}
-          
         </Flex>
         <Flex alignItems={"center"} gap={{ base: 2, sm: 4 }}>
           <Text>

@@ -8,7 +8,7 @@ import useLogout from "../../hooks/useLogout";
 import useAuthStore from "../../store/authStore";
 //tooltip problem <Tooltip display={{base:"block",md:"none"}} openDelay={500} closeDelay={100} hasArrow content={"Log out"} positioning={{placement:"right-end"}}></Tooltip>
 export const Sidebar = () => {
-  const {handleLogout,isLoggingOut} = useLogout();
+  const { handleLogout, isLoggingOut } = useLogout();
   const authUser = useAuthStore((state) => state.user);
   return (
     <Box>
@@ -44,7 +44,7 @@ export const Sidebar = () => {
           alignItems={"center"}
         >
           <Image h={"4vh"} src={"/search.png"} marginRight={3} />
-          <Link to={"/auth"} cursor={"pointer"}>
+          <Link to={"/"} cursor={"pointer"}>
             <Span display={{ base: "none", lg: "block" }} fontSize={18}>
               Search
             </Span>
@@ -57,7 +57,7 @@ export const Sidebar = () => {
           alignItems={{ base: "flex-start", lg: "center" }}
         >
           <Image h={"4vh"} src={"/bell1.png"} marginRight={3} />
-          <Link to={"/auth"} cursor={"pointer"}>
+          <Link to={"/"} cursor={"pointer"}>
             <Span
               display={{ base: "none", lg: "block" }}
               fontSize={{ lg: 16, xl: 18 }}
@@ -78,7 +78,8 @@ export const Sidebar = () => {
             src={"/create1.png"}
             marginRight={3}
           />
-          <Link to={"/auth"} cursor={"pointer"}>
+          <Link to={"/"} cursor={"pointer"}>
+            {/* да wrap-на целия флекс с линка!!! */}
             <Span
               display={{ base: "none", lg: "block" }}
               fontSize={{ lg: 16, xl: 18 }}
@@ -87,19 +88,19 @@ export const Sidebar = () => {
             </Span>
           </Link>
         </Flex>
-        <Flex
-          width={"6.5vw"}
-          borderRadius={6}
-          _hover={{ bg: "whiteAlpha.400" }}
-          alignItems={"center"}
-        >
-          <Image h={"4vh"} src={"/profile.png"} marginRight={3} />
-          <Link to={`/${authUser?.username}`} cursor={"pointer"}>
+        <Link to={`/${authUser?.username}`} cursor={"pointer"}>
+          <Flex
+            width={"6.5vw"}
+            borderRadius={6}
+            _hover={{ bg: "whiteAlpha.400" }}
+            alignItems={"center"}
+          >
+            <Image h={"4vh"} src={"/profile.png"} marginRight={3} />
             <Span display={{ base: "none", lg: "block" }} fontSize={18}>
               Profile
             </Span>
-          </Link>
-        </Flex>
+          </Flex>
+        </Link>
         <Flex
           width={"8vw"}
           borderRadius={6}
@@ -110,16 +111,26 @@ export const Sidebar = () => {
           {" "}
           <Image h={"4vh"} src={"/logout1.png"} marginRight={3} />
           <Tooltip
-            visibility={{base:null,md:"none"}}
+            visibility={{ base: null, md: "none" }}
             openDelay={500}
             closeDelay={100}
             hasArrow
             content={"Log out"}
             positioning={{ placement: "right-end" }}
           >
-            <Flex w={{ base: 10, md: "full" }} to={"/auth"} cursor={"pointer"} onClick={handleLogout}>
-              
-              <Button display={{ base: "none", lg: "block" }} fontSize={18} variant={"ghost"} _hover={{bg:"transparent"}} isLoading={isLoggingOut}>
+            <Flex
+              w={{ base: 10, md: "full" }}
+              to={"/auth"}
+              cursor={"pointer"}
+              onClick={handleLogout}
+            >
+              <Button
+                display={{ base: "none", lg: "block" }}
+                fontSize={18}
+                variant={"ghost"}
+                _hover={{ bg: "transparent" }}
+                isLoading={isLoggingOut}
+              >
                 Log out
               </Button>
             </Flex>
