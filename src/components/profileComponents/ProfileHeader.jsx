@@ -1,15 +1,18 @@
 /* eslint-disable react/prop-types */
-import { Flex, Text, Button, VStack, Span } from "@chakra-ui/react";
+import { Flex, Text, VStack, Span } from "@chakra-ui/react";
+import { Button } from "@/components/ui/button"
 import { Avatar } from "@/components/ui/avatar";
 import { AvatarGroup } from "@/components/ui/avatar";
 import useUserProfileStore from "../../store/userProfileStore";
 import useAuthStore from "../../store/authStore";
 import EditProfile from "./EditProfile";
 import { useState } from "react";
+import useFollowUser from "../../hooks/useFollowUser";
 const ProfileHeader = () => {
   const { userProfile } = useUserProfileStore();
   console.log("Profile header name: " + userProfile.username);
   const authUser = useAuthStore((state) => state.user);
+  const {isUpdating,isFollowing,handleFollowUser} = useFollowUser(userProfile?.uid);
   const visitingOwnProfileAndAuth =
     authUser && authUser.username === userProfile.username;
   const visitingAnotherUserProfileAndAuth =
@@ -17,8 +20,8 @@ const ProfileHeader = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(!open);
-  }
-  //to fix the saving problem 
+  };
+  //to fix the saving problem
   return (
     <Flex
       gap={{ base: 4, sm: 10 }}
@@ -58,22 +61,21 @@ const ProfileHeader = () => {
             >
               Edit profile
             </Button>
-            
           )}
-          {open && (
-            <EditProfile isOpen={open} onClose={handleOpen}/>
-          )}
+          {open && <EditProfile isOpen={open} onClose={handleOpen} />}
           {visitingAnotherUserProfileAndAuth && (
             <Button
               borderRadius={6}
-              bg={"blue.500"}
+              bg={isFollowing?"white":"blue.500"}
               cursor={"pointer"}
-              color={"white"}
+              color={isFollowing?"black":"white"}
               fontWeight={"bold"}
-              _hover={{ bg: "blue.600" }}
+              _hover={isFollowing?{bg:"whiteAlpha.800"}:{bg: "blue.600"}}
               size={{ base: "xs", md: "md" }}
+              onClick={handleFollowUser}
+              loading={isUpdating}
             >
-              Follow
+              {isFollowing?"Unfollow":"Follow"}
             </Button>
           )}
         </Flex>

@@ -1,11 +1,10 @@
-import { Container, Flex, VStack, Link, Text } from "@chakra-ui/react";
+import { Container, Flex, VStack, Link, Text, Box } from "@chakra-ui/react";
 import ProfileHeader from "../components/profileComponents/ProfileHeader";
 import {Skeleton, SkeletonCircle} from '@/components/ui/skeleton'
 import ProfilePosts from "../components/profileComponents/ProfilePosts";
 import ProfileTabs from "../components/profileComponents/PorfileTabs";
 import useGetUserProfileByUserName from "../hooks/useGetUserProfileByUserName";
 import { useParams } from "react-router-dom";
-import useAuthStore from "../store/authStore";
 import { Toaster } from "@/components/ui/toaster";
 
 const ProfilePage = () => {
@@ -44,13 +43,12 @@ const ProfilePage = () => {
   );
 };
 
-
 export default ProfilePage;
 
 const UserNotFound = () => {
   return (
-    <Flex>
-      <Text fontSize={"xl"}>User not found</Text>
+    <Flex justifyContent={"center"} flexDir={"column"} w="full">
+      <Text fontSize={"xl"} mx={"auto"}>User not found</Text>
       <Link href={"/"} color={"blue.500"} w={"max-content"} mx={"auto"}>Go back</Link>
     </Flex>
   )

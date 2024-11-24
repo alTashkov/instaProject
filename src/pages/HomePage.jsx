@@ -7,7 +7,7 @@ const HomePage = () => {
   return (
     <Container w={"container.lg"}>
       <Flex gap={15}>
-        <Box display={"flex"} flex={2} py={10} marginLeft={{base:"100px", md:"10px"}}>
+        <Box display={"flex"} flex={2} py={10} marginLeft={{base:null,xs:"30px", md:"10px"}}>
           <FeedPosts/>
         </Box>
         <Box flex={3} mr={15} display={{base:"none", md:"block"}} maxW={"300px"}>

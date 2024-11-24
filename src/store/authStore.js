@@ -15,7 +15,7 @@ const useAuthStore = create((set) => ({
     initializeUser: () => {
         const storedUser = localStorage.getItem("user-info");
         if (storedUser) {
-        set({ user: JSON.parse(storedUser) });
+            set({ user: JSON.parse(storedUser) });
         }
     },
 }));

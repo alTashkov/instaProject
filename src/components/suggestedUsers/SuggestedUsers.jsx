@@ -6,10 +6,10 @@ const SuggestedUsers = () => {
   return (
     <VStack alignItems={"flex-start"}>
         <SuggestedHeader/>
-        <SuggestedUser username={"benMarcus"} img={"/avat2.png"} followers={"14.3K"}/>
-        <SuggestedUser username={"MichaelGray"} img={"/avat3.png"} followers={"1.2K"}/>
-        <SuggestedUser username={"Lorra Holmes"} img={"/avat4.png"} followers={"12K"}/>
-        <SuggestedUser username={"Cat Videos"} img={"/avat5.png"} followers={"123.4K"}/>
+        <SuggestedUser user={"tester123"}/>
+        <SuggestedUser user={"tester123"}/>
+        <SuggestedUser user={"tester123"}/>
+        <SuggestedUser user={"tester123"}/>
     </VStack>
   )
 }
