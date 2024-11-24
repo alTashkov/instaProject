@@ -29,7 +29,7 @@ const SuggestedUser = ({ user, setUser }) => {
           h={{ base: "20px", md: "50px" }}
         />
         <VStack spacing={2}>
-          <Text fontSize={15} fontWeight={"bold"}>
+          <Text fontSize={15} fontWeight={"bold"} alignSelf={"flex-start"}>
             {user.fullName}
           </Text>
           <Text alignSelf={"flex-start"} fontSize={12} color={"gray.400"}>
