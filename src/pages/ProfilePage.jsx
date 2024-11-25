@@ -47,7 +47,7 @@ export default ProfilePage;
 
 const UserNotFound = () => {
   return (
-    <Flex justifyContent={"center"} flexDir={"column"} w="full">
+    <Flex justifyContent={"center"} flexDir={"column"} w="full" mt={20}>
       <Text fontSize={"xl"} mx={"auto"}>User not found</Text>
       <Link href={"/"} color={"blue.500"} w={"max-content"} mx={"auto"}>Go back</Link>
     </Flex>
