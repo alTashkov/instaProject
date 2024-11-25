@@ -32,6 +32,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const Create = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const authUser = useAuthStore((state) => state.user);
   const hiddenFileInput = useRef(null);
   const [caption, setCaption] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
@@ -177,7 +178,7 @@ const Create = () => {
       </DialogRoot>
 
       {/* Sidebar link */}
-      <Link cursor={"pointer"} onClick={handleOpen}>
+      <Link to={`/${authUser.username}`} cursor={"pointer"} onClick={handleOpen}>
         <Flex
           width={"6.5vw"}
           borderRadius={6}

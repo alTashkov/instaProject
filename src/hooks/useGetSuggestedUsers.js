@@ -12,7 +12,7 @@ const useGetSuggestedUsers = () => {
 
   useEffect(() => {
     if (!authUser) return;
-
+    
     const getSuggestedUsers = async () => {
       try {
         const usersRef = collection(fireStore, "users");

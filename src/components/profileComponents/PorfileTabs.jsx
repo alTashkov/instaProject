@@ -1,6 +1,6 @@
 import { Flex, Box, Text, Image } from '@chakra-ui/react'
 import React from 'react'
-import { BsBookmark, BsGrid3X3, BsSuitHeart } from 'react-icons/bs'
+import { BsBookmark, BsGrid3X3 } from 'react-icons/bs'
 
 const PorfileTabs = () => {
   return (

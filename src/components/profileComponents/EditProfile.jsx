@@ -40,7 +40,6 @@ const EditProfile = ({ isOpen, onClose }) => {
 
   const handleSave = async () => {
     try {
-      console.log("Saving data:", inputs, selectedFile);
       await editProfile(inputs, selectedFile); // Update Firebase
       setSelectedFile(null); // Reset file state
       onClose(); // Close the dialog

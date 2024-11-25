@@ -1,17 +1,24 @@
 /* eslint-disable react/prop-types */
-import { Box, Image } from '@chakra-ui/react';
-import PostHeader from './PostHeader';
-import PostFooter from './PostFooter';
-const FeedPost = ({img, username, avatar}) => {
+import { Box, Image } from "@chakra-ui/react";
+import PostHeader from "./PostHeader";
+import PostFooter from "./PostFooter";
+const FeedPost = ({ post }) => {
   return (
     <>
-        <PostHeader username={username} avatar={avatar}/>
-        <Box>
-          <Image borderRadius={4} h={"full"} w="full" src={img} alt={username} pe={0}/> 
-        </Box>
-        <PostFooter username={username}/>
+      <PostHeader post={post} />
+      <Box>
+        <Image
+          borderRadius={4}
+          maxH={"500px"}
+          w="full"
+          src={post.image}
+          alt={"feedPostImg"}
+          pe={0}
+        />
+      </Box>
+      <PostFooter post={post} />
     </>
-  )
-}
+  );
+};
 
 export default FeedPost;

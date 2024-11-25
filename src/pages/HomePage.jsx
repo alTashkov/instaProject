@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Flex, Box } from '@chakra-ui/react'
 import FeedPosts from '@/components/FeedPosts/FeedPosts.jsx'
 import SuggestedUsers from '@/components/suggestedUsers/SuggestedUsers.jsx'
-
+import Comments from '../components/profileComponents/Comments'
 const HomePage = () => {
   return (
     <Container w={"container.lg"}>
