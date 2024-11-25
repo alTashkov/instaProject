@@ -2,6 +2,7 @@ import React from "react";
 import { Flex, Image, Span } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 const Notifications = () => {
+  //развитите в бъдеще
   return (
     <Flex
       width={{ base: "6.5vw", md: "9vw" }}
